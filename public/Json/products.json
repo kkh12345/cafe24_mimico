@@ -1,0 +1,105 @@
+[
+  {
+    "productId": 0,
+    "productName": "mimico top 니트 가디건",
+    "productImg": "product1.jpg",
+    "desc": "멀티팝업, 아이콘 바로가기 완벽 기본세팅 보장!!",
+    "originalPrice": 78000,
+    "discountRate": 4,
+    "isPopular": true,
+    "isNew": false,
+    "size": ["S", "M", "L"]
+  },
+  {
+    "productId": 1,
+    "productName": "mimico top 블라우스",
+    "productImg": "product2.jpg",
+    "desc": "디자인 구입시 주문서 작성 필수!!! 빠른 세팅 보장합니다",
+    "originalPrice": 175000,
+    "discountRate": 1,
+    "isPopular": true,
+    "isNew": true,
+    "color": ["#F5AEAE", "#D6D6D6", "#8DC480"]
+  },
+  {
+    "productId": 2,
+    "productName": "mimico 데님 점프수트",
+    "productImg": "product3.jpg",
+    "desc": "PC 쇼핑몰 하나로 모바일 단계까지 줄어든 완벽 반응형 스킨",
+    "originalPrice": 192000,
+    "discountRate": 3,
+    "isPopular": false,
+    "isNew": false
+  },
+  {
+    "productId": 3,
+    "productName": "mimico 플랫 슈즈",
+    "productImg": "product4.jpg",
+    "desc": "[중요] 상세페이지, 마이페이지, 마이쿠폰 등 꼼꼼하게 확인해주세요!!!",
+    "originalPrice": 99000,
+    "discountRate": 9,
+    "isPopular": false,
+    "isNew": true
+  },
+  {
+    "productId": 4,
+    "productName": "mimico 테니스 스커트",
+    "productImg": "product5.jpg",
+    "desc": "멀티팝업, 아이콘 바로가기 완벽 기본세팅 보장!!",
+    "originalPrice": 78000,
+    "discountRate": 4,
+    "isPopular": true,
+    "isNew": false,
+    "size": ["S", "M", "L"]
+  },
+  {
+    "productId": 5,
+    "productName": "mimico top 스웨터",
+    "productImg": "product6.jpg",
+    "desc": "[공지]최신소스 업데이트 완료 ! 카페24 제공 업그레이드 소스를 반영했습니다.",
+    "originalPrice": 175000,
+    "discountRate": 10,
+    "isPopular": true,
+    "isNew": true
+  },
+  {
+    "productId": 6,
+    "productName": "mimico 점프수트",
+    "productImg": "product7.jpg",
+    "desc": "디자인 구입문의는 031-628-6380 고객센터로 전화주세요!",
+    "originalPrice": 90000,
+    "discountRate": 11,
+    "isPopular": false,
+    "isNew": true
+  },
+  {
+    "productId": 7,
+    "productName": "mimico top 야구점퍼",
+    "productImg": "product8.jpg",
+    "desc": "디자인구입 정답은 굿디몰디자인에 있어요~♡",
+    "originalPrice": 100000,
+    "discountRate": 0,
+    "isPopular": true,
+    "isNew": true
+  },
+  {
+    "productId": 8,
+    "productName": "mimico 스커트",
+    "productImg": "product9.jpg",
+    "desc": "겉뿐만 아니라 속까지 예쁜 디자인 ! 디자인과 기능 2가지 모두 놓치지 마세요 !",
+    "originalPrice": 89000,
+    "discountRate": 10,
+    "isPopular": true,
+    "isNew": false
+  },
+  {
+    "productId": 9,
+    "productName": "mimico 양말세트",
+    "productImg": "product10.jpg",
+    "desc": "[공지]최신소스 업데이트 완료 ! 카페24 제공 업그레이드 소스를 반영했습니다.",
+    "originalPrice": 150000,
+    "discountRate": 11,
+    "isPopular": true,
+    "isNew": true
+  }
+]

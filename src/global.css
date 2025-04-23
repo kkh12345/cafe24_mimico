@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/fontbee/font@main/Gmarket/GmarketSansMedium.woff')
+    format('woff');
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'GmarketSansMedium', 'Montserrat', 'Noto Sans KR';
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+:root {
+  --point-orange: #e53c1b;
+  --point-yellow: #ffdfaa;
+  --border-radius30: 30px;
+}
+
+.inner-common {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
