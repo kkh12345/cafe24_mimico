@@ -17,18 +17,17 @@ export const TextWrapper = styled.div`
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
+    -webkit-line-clamp: 1;
   }
 
   & .name {
     font-size: 0.75rem;
     font-weight: 500;
-    -webkit-line-clamp: 1;
   }
 
   & .desc {
     margin: 8px 0;
     color: #555555;
-    -webkit-line-clamp: 2;
   }
 
   & .color-list {

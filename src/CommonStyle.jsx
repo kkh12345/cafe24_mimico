@@ -27,6 +27,13 @@ export const HomeSectionTitle = styled.h2`
     color: #000000;
     font-size: 0.8125rem;
   }
+
+  & .new__more-btn,
+  .kids-item__more-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 `;
 
 export const SlideCircleButton = styled.button`

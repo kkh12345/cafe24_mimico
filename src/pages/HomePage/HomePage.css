@@ -96,11 +96,6 @@
   padding: 100px 0;
 }
 
-.new__more-btn {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
 .new__grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -111,7 +106,7 @@
 /* collection */
 
 .collection {
-  padding: 40px 0;
+  padding: 45px 0;
   margin: 0 20px;
   border-radius: var(--border-radius30);
   background-color: #f7f7f7;
@@ -119,10 +114,15 @@
 
 .collection__inner {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.collection__left {
+  padding-right: 5%;
+}
 .collection__left,
-.collection-right {
+.collection__right {
   width: 50%;
 }
 
@@ -131,7 +131,55 @@
 }
 
 .collection__desc {
+  margin: 10px 0;
   font-size: 0.9375rem;
+  color: #555555;
+  text-align: center;
+}
+
+.collection-swiper .swiper-slide {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: var(--border-radius30);
+}
+
+.collection-swiper {
+  padding-top: 24px;
+}
+
+.collection__right iframe {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: var(--border-radius30);
+}
+
+/* kids item */
+.kids-item {
+  padding: 100px 0;
+}
+
+.kids-item__content-box {
+  display: flex;
+}
+
+.kids-item-banner-swiper {
+  width: 50%;
+  border-radius: var(--border-radius30);
+}
+
+.kids-item-banner-swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kids-item__grid-container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* review */

@@ -5,6 +5,7 @@ import ReviewSection from './sections/ReviewSection';
 import BestSellerSection from './sections/BestSellerSection';
 import NewSection from './sections/NewSection';
 import CollectionSection from './sections/CollectionSection';
+import KidsItemSection from './sections/KidsItemSection';
 import './HomePage.css';
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <BestSellerSection />
       <NewSection />
       <CollectionSection />
+      <KidsItemSection />
       <ReviewSection />
       <InstagramSection />
     </div>
