@@ -13,11 +13,16 @@ const S = {
 
 const slideBannerImg = ['main_banner02_1.jpg', 'main_banner02_2.jpg'];
 
-export default function KidsItemSection() {
+export default function KidsItemSection({ scrollAniRef }) {
   return (
-    <section className="kids-item">
-      <div className="kids-item__inner inner-common inner-common">
-        <S.HomeSectionTitle>
+    <section className="kids-item scroll-ani">
+      <div
+        className="kids-item__inner inner-common scroll-ani-wrapper"
+        ref={(el) => {
+          scrollAniRef.current.kidsItemSection = el;
+        }}
+      >
+        <S.HomeSectionTitle $margin={'0 0 25px 0'}>
           KIDS ITEM
           <S.MoreButtonSmall className="kids-item__more-btn" to="">
             more

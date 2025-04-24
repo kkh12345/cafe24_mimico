@@ -8,12 +8,17 @@ const S = {
   MoreButtonSmall: MoreButtonSmall,
 };
 
-export default function NewSection() {
+export default function NewSection({ scrollAniRef }) {
   const { newProducts } = useProducts();
 
   return (
-    <section className="new">
-      <div className="new__inner inner-common">
+    <section className="new scroll-ani">
+      <div
+        className="new__inner inner-common scroll-ani-wrapper"
+        ref={(el) => {
+          scrollAniRef.current.newSection = el;
+        }}
+      >
         <S.HomeSectionTitle>
           NEW
           <S.MoreButtonSmall className="new__more-btn" to="">

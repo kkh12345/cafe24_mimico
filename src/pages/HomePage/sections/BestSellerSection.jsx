@@ -15,10 +15,15 @@ const S = {
   SlideCircleButton: SlideCircleButton,
 };
 
-export default function BestSellerSection() {
+export default function BestSellerSection({ scrollAniRef }) {
   return (
-    <section className="best-seller">
-      <div className="best-seller__inner inner-common">
+    <section className="best-seller ">
+      <div
+        className="best-seller__inner inner-common scroll-ani-wrapper"
+        ref={(el) => {
+          scrollAniRef.current.bestSellerSection = el;
+        }}
+      >
         <S.HomeSectionTitle $margin={'0 0 10px'}>
           BEST SELLER
         </S.HomeSectionTitle>

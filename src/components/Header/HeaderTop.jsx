@@ -76,7 +76,7 @@ export default function HeaderTop() {
       {/* 사이트맵 */}
       {isSitemapOpen && <Sitemap />}
       <div className="header__top-inner inner-common">
-        <Link className="header__logo-wrapper">
+        <Link className="header__logo-wrapper" to="/">
           <img
             className="header__logo"
             src={`/img/${logoImg}`}

@@ -13,10 +13,15 @@ const S = {
   MoreButtonSmall: MoreButtonSmall,
 };
 
-export default function ReviewSection() {
+export default function ReviewSection({ scrollAniRef }) {
   return (
-    <section className="review">
-      <div className="review__inner inner-common">
+    <section className="review scroll-ani">
+      <div
+        className="review__inner inner-common scroll-ani-wrapper"
+        ref={(el) => {
+          scrollAniRef.current.reviewSection = el;
+        }}
+      >
         <S.HomeSectionTitle $margin={'0 0 25px 0'}>
           상품 사용후기
         </S.HomeSectionTitle>

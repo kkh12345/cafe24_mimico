@@ -1,3 +1,22 @@
+/* common */
+
+section:has(.scroll-ani-wrapper) {
+  overflow: hidden;
+}
+
+.scroll-ani-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(150px);
+  transition: all 1s;
+}
+
+.scroll-ani-wrapper.--run {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* main visual */
 
 .main-visual-swiper img {
@@ -162,10 +181,11 @@
 
 .kids-item__content-box {
   display: flex;
+  gap: 20px;
 }
 
 .kids-item-banner-swiper {
-  width: 50%;
+  width: 35%;
   border-radius: var(--border-radius30);
 }
 
@@ -177,9 +197,11 @@
 }
 
 .kids-item__grid-container {
-  width: 50%;
+  width: 65%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px 0;
 }
 
 /* review */
