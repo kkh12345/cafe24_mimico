@@ -131,6 +131,7 @@
 .global-nav__depth1-item {
   padding: 15px 30px 15px 0;
   position: relative;
+  transition: padding 0.3s;
 }
 
 .global-nav__depth1-item:hover .global-nav__depth2 {
@@ -225,4 +226,15 @@
   padding: 12px 0 12px 2rem;
   background-color: transparent;
   font-size: 1.5625rem;
+}
+
+@media screen and (max-width: 1200px) {
+  /* global nav */
+  .global-nav__depth1-item {
+    padding: 15px 20px 15px 0;
+  }
+
+  .global-nav__depth1-item > a {
+    font-size: 0.8125rem;
+  }
 }

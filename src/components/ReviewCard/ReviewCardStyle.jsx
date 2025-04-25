@@ -26,6 +26,10 @@ export const ImgWrapper = styled(Link)`
     object-fit: ${(props) => (props.$reviewImg ? 'cover' : 'contain')};
     transition: transform 0.5s;
   }
+
+  @media (max-width: 1200px) {
+    height: 250px;
+  }
 `;
 
 export const TextWrapper = styled.div`

@@ -42,10 +42,10 @@ export default function CollectionSection() {
         </div>
         <div className="collection__right">
           <iframe
-            src="https://www.youtube.com/embed/3NaWJnFzhZs?autoplay=1&loop=1&playlist=3NaWJnFzhZs"
+            src="https://www.youtube.com/embed/3NaWJnFzhZs"
             title="YouTube video player"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>

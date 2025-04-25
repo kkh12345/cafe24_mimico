@@ -14,6 +14,7 @@ export default function HomePage() {
 
   let lastScrollY = 0;
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     let isScrollUp = true;
 
     const upObserver = new IntersectionObserver(
@@ -62,9 +63,6 @@ export default function HomePage() {
 
     return () => {
       window.removeEventListener('scroll', changeObserver);
-      for (let key in scrollAniRef.current) {
-        upObserver.unobserve(scrollAniRef.current[key]);
-      }
     };
   }, []);
 

@@ -131,3 +131,12 @@
 .footer__account {
   margin-top: 25px;
 }
+
+@media screen and (max-width: 1024px) {
+  .footer__social-icons a {
+    width: 34px;
+  }
+  .footer__social-icons i {
+    font-size: 24px;
+  }
+}

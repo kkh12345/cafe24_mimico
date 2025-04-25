@@ -3,17 +3,41 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import useProducts from '../../../hooks/useProducts';
-import { MoreButtonSmall, HomeSectionTitle } from '../../../CommonStyle';
+import {
+  MoreButtonSmall,
+  HomeSectionTitle,
+  MoreViewProductsBtn,
+} from '../../../CommonStyle';
 import ProductCard from '../../../components/ProductCard/ProductCard';
+import useResponsive from '../../../hooks/useResponsive';
+import { useEffect, useRef, useState } from 'react';
 
 const S = {
   MoreButtonSmall: MoreButtonSmall,
   HomeSectionTitle: HomeSectionTitle,
+  MoreViewProductsBtn: MoreViewProductsBtn,
 };
 
-const slideBannerImg = ['main_banner02_1.jpg', 'main_banner02_2.jpg'];
-
 export default function KidsItemSection({ scrollAniRef }) {
+  const { products } = useProducts();
+  const { isTabletBig, isTabletSmall, isMobile } = useResponsive();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perView, setPerView] = useState(0);
+  const wholePageCount = Math.ceil(products.length / perView);
+
+  useEffect(() => {
+    let i = 0;
+    if (isMobile) {
+      i = 4;
+    } else if (isTabletSmall || isTabletBig) {
+      i = 6;
+    } else {
+      i = 8;
+    }
+    setPerView(i);
+    setCurrentPage(1);
+  }, [isTabletBig, isTabletSmall, isMobile]);
+
   return (
     <section className="kids-item scroll-ani">
       <div
@@ -31,7 +55,17 @@ export default function KidsItemSection({ scrollAniRef }) {
 
         <div className="kids-item__content-box">
           <KidsItemBannerSwiper />
-          <KidsItemGridContainer />
+          <KidsItemGridContainer currentPage={currentPage} perView={perView} />
+          {currentPage < wholePageCount && isTabletSmall && (
+            <S.MoreViewProductsBtn
+              onClick={() => {
+                setCurrentPage(currentPage + 1);
+              }}
+            >
+              더보기 ({currentPage}/{wholePageCount})
+              <i className="xi-angle-down"></i>
+            </S.MoreViewProductsBtn>
+          )}
         </div>
       </div>
     </section>
@@ -39,6 +73,16 @@ export default function KidsItemSection({ scrollAniRef }) {
 }
 
 function KidsItemBannerSwiper() {
+  const { isTabletSmall } = useResponsive();
+  let slideBannerImg = () => {
+    if (isTabletSmall) {
+      return ['main_banner02_1 (1).jpg', 'main_banner02_2 (1).jpg'];
+    } else {
+      return ['main_banner02_1.jpg', 'main_banner02_2.jpg'];
+    }
+  };
+  slideBannerImg = slideBannerImg();
+
   const swiperOptions = {
     autoplay: {
       delay: 3500,
@@ -63,16 +107,22 @@ function KidsItemBannerSwiper() {
   );
 }
 
-function KidsItemGridContainer() {
+function KidsItemGridContainer(props) {
+  const { currentPage, perView } = props;
   const { products } = useProducts();
+  const { isTabletSmall } = useResponsive();
+
   return (
     <ul className="kids-item__grid-container">
-      {products.slice(0, 8).map((product) => {
+      {products.slice(0, currentPage * perView).map((product) => {
         return (
           <li key={product.productId}>
             <ProductCard>
               <ProductCard.ImgWrapper product={product} />
-              <ProductCard.TextWrapper padding={'15px'} product={product} />
+              <ProductCard.TextWrapper
+                padding={`${isTabletSmall ? '15px 0' : '15px'}`}
+                product={product}
+              />
             </ProductCard>
           </li>
         );

@@ -52,6 +52,14 @@ function BestSellerSwiper() {
     onInit: (swiper) => {
       swiperRef.current = swiper;
     },
+    breakpoints: {
+      1024: {
+        slidesPerView: 4,
+      },
+      0: {
+        slidesPerView: 3,
+      },
+    },
     className: 'best-seller-swiper',
   };
 
