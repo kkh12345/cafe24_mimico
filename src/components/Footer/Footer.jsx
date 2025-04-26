@@ -105,19 +105,19 @@ function FooterRight() {
     <section className="footer__right">
       <div className="footer__cs-center">
         <h2>고객센터</h2>
-        <p>
-          고객센터 평일 09:00 - 18:00 (점심 12:00 - 13:00)
+        <p className="footer__runtime">
+          <span>고객센터 평일 09:00 - 18:00 (점심 12:00 - 13:00)</span>
           <br />
-          토요일 일요일 공휴일 휴무
+          <span>토요일 일요일 공휴일 휴무</span>
         </p>
       </div>
       <div className="footer__account">
         <h2>계좌정보</h2>
       </div>
-      <p>
-        계좌정보 우리 1002-355-664254
+      <p className="footer__account-info">
+        <span>계좌정보 우리 1002-355-664254</span>
         <br />
-        신한 1234-123-123456
+        <span>신한 1234-123-123456</span>
         <br />
         예금주 : 굿디몰디자인
       </p>

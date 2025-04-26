@@ -11,7 +11,7 @@ export default function useResponsive() {
   const isTabletSmall = useMediaQuery({
     query: '(max-width: 768px)',
   });
-  const isMobile = useMediaQuery({ query: '(max-width: 420px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
   return { isPc, isPcSmall, isTabletBig, isTabletSmall, isMobile };
 }

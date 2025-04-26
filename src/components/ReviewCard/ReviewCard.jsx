@@ -10,7 +10,7 @@ ReviewCard.ImgWrapper = ({ review }) => {
   return (
     <S.ImgWrapper $reviewImg={review.reviewImg}>
       <img
-        className="thumb-img"
+        className={`thumb-img ${review.reviewImg || 'logo'}`}
         src={`/img/${review.reviewImg ? review.reviewImg : logoImg}`}
         alt={`리뷰썸네일${review.reviewId}`}
       />

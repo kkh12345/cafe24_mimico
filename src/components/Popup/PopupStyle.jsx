@@ -56,4 +56,9 @@ export const CloseButton = styled.button`
   & i {
     display: block;
   }
+
+  @media (max-width: 480px) {
+    font-size: 0.875rem;
+    right: 10px;
+  }
 `;

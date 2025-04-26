@@ -12,6 +12,11 @@ export const MoreButton = styled(Link)`
   @media (max-width: 1200px) {
     padding: 20px 15px;
   }
+
+  @media (max-width: 768px) {
+    padding: 15px 12px;
+    font-size: 0.875rem;
+  }
 `;
 
 export const MoreButtonSmall = styled(MoreButton)`
@@ -25,7 +30,6 @@ export const MoreButtonSmall = styled(MoreButton)`
 `;
 
 export const HomeSectionTitle = styled.h2`
-  margin: ${(props) => (props.$margin ? props.$margin : '0')};
   text-align: center;
   color: #222222;
   font-size: 2rem;
@@ -44,7 +48,11 @@ export const HomeSectionTitle = styled.h2`
     right: 0;
   }
 
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
   @media (max-width: 480px) {
+    font-size: 1.375rem;
     & .new__more-btn,
     .kids-item__more-btn {
       display: block;
@@ -82,9 +90,14 @@ export const SlideCircleButton = styled.button`
     font-size: 16px;
     font-weight: bold;
   }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
-export const MoreViewProductsBtn = styled.button`
+export const ViewMoreProductsBtn = styled.button`
+  width: 100%;
   padding: 10px 16px;
   background-color: transparent;
   font-size: 0.8125rem;

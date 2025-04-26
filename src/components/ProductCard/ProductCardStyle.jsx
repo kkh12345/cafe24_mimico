@@ -6,12 +6,14 @@ export const ProductCard = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  padding: ${(props) => (props.$padding ? props.$padding : '15px')};
+  min-height: 110px;
+
+  padding: ${(props) => (props.$padding ? props.$padding : ' 15px')};
   font-size: 0.75rem;
   ${(props) => props.$isAbsolute && TextWrapperAbsolute}
   transition: all 0.5s;
 
-  & .name,
+  & .name a,
   .desc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -53,6 +55,7 @@ export const TextWrapper = styled.div`
 export const ImgWrapper = styled(Link)`
   display: block;
   margin: ${(props) => (props.$margin ? props.$margin : '0')};
+
   border-radius: var(--border-radius30);
   overflow: hidden;
 
@@ -75,12 +78,14 @@ export const ImgWrapper = styled(Link)`
   }
 `;
 export const TextWrapperAbsolute = css`
-  width: 100%;
+  width: ${(props) => (props.$width ? props.$width : '100%')};
   background-color: rgba(255, 255, 255, 0.84);
   opacity: 0;
   visibility: hidden;
   position: absolute;
+  left: 50%;
   bottom: 0;
+  transform: translateX(-50%);
   z-index: 1;
 `;
 

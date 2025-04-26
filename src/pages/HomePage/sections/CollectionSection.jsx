@@ -5,6 +5,7 @@ import { HomeSectionTitle, SlideCircleButton } from '../../../CommonStyle';
 import useSwiper from '../../../hooks/useSwiper';
 import useProducts from '../../../hooks/useProducts';
 import ProductCard from '../../../components/ProductCard/ProductCard';
+import useResponsive from '../../../hooks/useResponsive';
 
 const S = {
   HomeSectionTitle: HomeSectionTitle,
@@ -13,30 +14,35 @@ const S = {
 
 export default function CollectionSection() {
   const { swiperRef, slideNext, slidePrev } = useSwiper();
+  const { isMobile } = useResponsive();
   return (
     <section className="collection">
       <div className="collection__inner inner-common">
         <div className="collection__left">
           <div className="collection__text-box">
             <S.HomeSectionTitle>COLLECTION</S.HomeSectionTitle>
-            <p className="collection__desc">
-              가장 좋은 것을 주고싶은 마음으로 최선을 다해 제품을 선보이고
-              있습니다.
-            </p>
-            <S.SlideCircleButton
-              $translateX={'0'}
-              className="prev"
-              onClick={slideNext}
-            >
-              <i className="xi-long-arrow-left"></i>
-            </S.SlideCircleButton>
-            <S.SlideCircleButton
-              $translateX={'0'}
-              className="next"
-              onClick={slidePrev}
-            >
-              <i className="xi-long-arrow-right"></i>
-            </S.SlideCircleButton>
+            {isMobile || (
+              <>
+                <p className="collection__desc">
+                  가장 좋은 것을 주고싶은 마음으로 최선을 다해 제품을 선보이고
+                  있습니다.
+                </p>
+                <S.SlideCircleButton
+                  $translateX={'0'}
+                  className="prev"
+                  onClick={slideNext}
+                >
+                  <i className="xi-long-arrow-left"></i>
+                </S.SlideCircleButton>
+                <S.SlideCircleButton
+                  $translateX={'0'}
+                  className="next"
+                  onClick={slidePrev}
+                >
+                  <i className="xi-long-arrow-right"></i>
+                </S.SlideCircleButton>
+              </>
+            )}
           </div>
           <CollectionSwiper swiperRef={swiperRef} />
         </div>
@@ -57,17 +63,28 @@ export default function CollectionSection() {
 
 function CollectionSwiper({ swiperRef }) {
   const { products } = useProducts();
+  const { isMobile } = useResponsive();
   const swiperOptions = {
     autoplay: {
       delay: 3500,
       disableOnInteraction: false,
     },
-    slidesPerView: 3,
-    slidesPerGroup: 3,
+
     spaceBetween: 10,
     speed: 500,
     loop: true,
     loopAddBlankSlides: false,
+    breakpoints: {
+      480: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+      },
+      0: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 14,
+      },
+    },
     modules: [Autoplay],
     onInit: (swiper) => {
       swiperRef.current = swiper;
@@ -81,11 +98,12 @@ function CollectionSwiper({ swiperRef }) {
         return (
           <SwiperSlide>
             <ProductCard>
-              <ProductCard.ImgWrapper product={product} />
+              <ProductCard.ImgWrapper product={product} margin={'15px'} />
               <ProductCard.TextWrapper
-                isAbsolute={true}
-                padding={'15px'}
+                isAbsolute={isMobile ? false : true}
+                padding={isMobile ? '0 7px 15px' : '10px 0'}
                 product={product}
+                width={'calc(100% - 30px)'}
               />
             </ProductCard>
           </SwiperSlide>

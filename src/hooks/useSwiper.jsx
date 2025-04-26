@@ -14,5 +14,23 @@ export default function useSwiper() {
     }
   };
 
-  return { swiperRef, slideNext, slidePrev };
+  const slideAutoplayStop = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.autoplay.stop();
+    }
+  };
+
+  const slideAutoplayStart = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.autoplay.start();
+    }
+  };
+
+  return {
+    swiperRef,
+    slideNext,
+    slidePrev,
+    slideAutoplayStop,
+    slideAutoplayStart,
+  };
 }

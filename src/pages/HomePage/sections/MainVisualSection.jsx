@@ -5,12 +5,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { MoreButton } from '../../../CommonStyle';
+import useResponsive from '../../../hooks/useResponsive';
 
 const S = {
   MoreButton: MoreButton,
 };
-
-const slideImgs = ['mainImg1.jpg', 'mainImg2.jpg', 'mainImg3.jpg'];
 
 export default function MainVisualSection() {
   return (
@@ -21,6 +20,16 @@ export default function MainVisualSection() {
 }
 
 function MainVisualSwiper() {
+  const { isTabletSmall } = useResponsive();
+  let slideImgs = () => {
+    if (isTabletSmall) {
+      return ['mainImg1 (1).jpg', 'mainImg2 (1).jpg', 'mainImg3 (1).jpg'];
+    } else {
+      return ['mainImg1.jpg', 'mainImg2.jpg', 'mainImg3.jpg'];
+    }
+  };
+  slideImgs = slideImgs();
+
   const swiperOptions = {
     navigation: true,
     pagination: {
@@ -32,7 +41,6 @@ function MainVisualSwiper() {
     },
     speed: 500,
     loop: true,
-
     modules: [Navigation, Pagination, Autoplay],
     className: 'main-visual-swiper',
   };

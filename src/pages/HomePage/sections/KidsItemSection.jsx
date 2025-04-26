@@ -6,16 +6,16 @@ import useProducts from '../../../hooks/useProducts';
 import {
   MoreButtonSmall,
   HomeSectionTitle,
-  MoreViewProductsBtn,
+  ViewMoreProductsBtn,
 } from '../../../CommonStyle';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import useResponsive from '../../../hooks/useResponsive';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const S = {
   MoreButtonSmall: MoreButtonSmall,
   HomeSectionTitle: HomeSectionTitle,
-  MoreViewProductsBtn: MoreViewProductsBtn,
+  ViewMoreProductsBtn: ViewMoreProductsBtn,
 };
 
 export default function KidsItemSection({ scrollAniRef }) {
@@ -56,15 +56,16 @@ export default function KidsItemSection({ scrollAniRef }) {
         <div className="kids-item__content-box">
           <KidsItemBannerSwiper />
           <KidsItemGridContainer currentPage={currentPage} perView={perView} />
+
           {currentPage < wholePageCount && isTabletSmall && (
-            <S.MoreViewProductsBtn
+            <S.ViewMoreProductsBtn
               onClick={() => {
                 setCurrentPage(currentPage + 1);
               }}
             >
               더보기 ({currentPage}/{wholePageCount})
               <i className="xi-angle-down"></i>
-            </S.MoreViewProductsBtn>
+            </S.ViewMoreProductsBtn>
           )}
         </div>
       </div>
@@ -74,6 +75,7 @@ export default function KidsItemSection({ scrollAniRef }) {
 
 function KidsItemBannerSwiper() {
   const { isTabletSmall } = useResponsive();
+
   let slideBannerImg = () => {
     if (isTabletSmall) {
       return ['main_banner02_1 (1).jpg', 'main_banner02_2 (1).jpg'];
@@ -110,7 +112,6 @@ function KidsItemBannerSwiper() {
 function KidsItemGridContainer(props) {
   const { currentPage, perView } = props;
   const { products } = useProducts();
-  const { isTabletSmall } = useResponsive();
 
   return (
     <ul className="kids-item__grid-container">
@@ -119,10 +120,7 @@ function KidsItemGridContainer(props) {
           <li key={product.productId}>
             <ProductCard>
               <ProductCard.ImgWrapper product={product} />
-              <ProductCard.TextWrapper
-                padding={`${isTabletSmall ? '15px 0' : '15px'}`}
-                product={product}
-              />
+              <ProductCard.TextWrapper padding={'15px 0'} product={product} />
             </ProductCard>
           </li>
         );

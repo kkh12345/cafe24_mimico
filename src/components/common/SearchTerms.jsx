@@ -25,6 +25,14 @@ const S = {
       border-radius: 30px;
       background-color: var(--point-yellow);
     }
+
+    @media (max-width: 480px) {
+      font-size: 0.875rem;
+
+      & a {
+        padding: 6px 14px;
+      }
+    }
   `,
 };
 

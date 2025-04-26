@@ -23,19 +23,33 @@ export const ImgWrapper = styled(Link)`
   & .thumb-img {
     width: ${(props) => props.$reviewImg && '100%'};
     height: ${(props) => props.$reviewImg && '100%'};
-    object-fit: ${(props) => (props.$reviewImg ? 'cover' : 'contain')};
+    object-fit: cover;
     transition: transform 0.5s;
+
+    &.logo {
+      object-fit: contain;
+    }
   }
 
   @media (max-width: 1200px) {
     height: 250px;
+  }
+  @media (max-width: 480px) {
+    height: 200px;
+
+    & .thumb-img {
+      &.logo {
+        height: 30px;
+        object-fit: cover;
+      }
+    }
   }
 `;
 
 export const TextWrapper = styled.div`
   padding: 20px;
 
-  & .title,
+  & .title a,
   .content {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -47,7 +61,9 @@ export const TextWrapper = styled.div`
     margin-top: 10px;
     font-size: 0.9375rem;
     color: #333;
-    -webkit-line-clamp: 1;
+    & a {
+      -webkit-line-clamp: 1;
+    }
   }
 
   & .content {
@@ -72,6 +88,12 @@ export const TextWrapper = styled.div`
     & > img {
       width: 30px;
       object-fit: cover;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &. nickname {
+      margin-top: 10px;
     }
   }
 `;

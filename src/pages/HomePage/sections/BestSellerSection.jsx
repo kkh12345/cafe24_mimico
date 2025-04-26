@@ -9,6 +9,7 @@ import { HomeSectionTitle } from '../../../CommonStyle';
 //커스텀 훅
 import useProducts from '../../../hooks/useProducts';
 import useSwiper from '../../../hooks/useSwiper';
+import useResponsive from '../../../hooks/useResponsive';
 
 const S = {
   HomeSectionTitle: HomeSectionTitle,
@@ -36,6 +37,7 @@ export default function BestSellerSection({ scrollAniRef }) {
 function BestSellerSwiper() {
   const { products, getProducts } = useProducts();
   const { swiperRef, slideNext, slidePrev } = useSwiper();
+  const { isMobile } = useResponsive();
 
   const swiperOptions = {
     autoplay: {
@@ -55,9 +57,16 @@ function BestSellerSwiper() {
     breakpoints: {
       1024: {
         slidesPerView: 4,
+        slidesPerGroup: 4,
+      },
+      768: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
       },
       0: {
-        slidesPerView: 3,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 15,
       },
     },
     className: 'best-seller-swiper',
@@ -81,7 +90,10 @@ function BestSellerSwiper() {
             <SwiperSlide>
               <ProductCard>
                 <ProductCard.ImgWrapper margin={'15px'} product={product} />
-                <ProductCard.TextWrapper padding={'15px'} product={product} />
+                <ProductCard.TextWrapper
+                  padding={isMobile && '0 11px 15px'}
+                  product={product}
+                />
               </ProductCard>
             </SwiperSlide>
           );

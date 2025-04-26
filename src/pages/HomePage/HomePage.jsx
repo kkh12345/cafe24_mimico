@@ -41,17 +41,21 @@ export default function HomePage() {
       } else {
         if (!isScrollUp) {
           for (let key in scrollAniRef.current) {
-            upObserver.unobserve(scrollAniRef.current[key]);
+            if (scrollAniRef.current[key] !== null) {
+              upObserver.unobserve(scrollAniRef.current[key]);
+            }
           }
         }
         isScrollUp = true;
 
         for (let key in scrollAniRef.current) {
-          if (
-            scrollAniRef.current[key].getBoundingClientRect().top >=
-            window.innerHeight - 200
-          ) {
-            scrollAniRef.current[key].classList.remove('--run');
+          if (scrollAniRef.current[key] !== null) {
+            if (
+              scrollAniRef.current[key].getBoundingClientRect().top >=
+              window.innerHeight - 200
+            ) {
+              scrollAniRef.current[key].classList.remove('--run');
+            }
           }
         }
       }

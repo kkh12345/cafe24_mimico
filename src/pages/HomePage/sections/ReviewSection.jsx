@@ -43,7 +43,20 @@ function ReviewSwiper() {
       disableOnInteraction: false,
     },
     slidesPerView: 4,
-    spaceBetween: 20,
+    spaceBetween: 25,
+    breakpoints: {
+      1024: {
+        slidesPerView: 4,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      0: {
+        slidesPerView: 2,
+
+        spaceBetween: 15,
+      },
+    },
     speed: 500,
     loop: true,
     modules: [Autoplay],

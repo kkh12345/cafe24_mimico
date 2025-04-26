@@ -19,7 +19,7 @@ ProductCard.IconBox = function () {
   return;
 };
 
-ProductCard.TextWrapper = function ({ product, isAbsolute, padding }) {
+ProductCard.TextWrapper = function ({ product, isAbsolute, padding, width }) {
   const {
     productId,
     productName,
@@ -32,7 +32,7 @@ ProductCard.TextWrapper = function ({ product, isAbsolute, padding }) {
   } = product;
 
   return (
-    <S.TextWrapper $isAbsolute={isAbsolute} $padding={padding}>
+    <S.TextWrapper $width={width} $isAbsolute={isAbsolute} $padding={padding}>
       <h3 className="name">
         <Link to={`/productDetail/${productId}`}>{productName}</Link>
       </h3>
