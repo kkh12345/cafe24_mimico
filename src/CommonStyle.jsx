@@ -87,6 +87,7 @@ export const SlideCircleButton = styled.button`
 
   & i {
     display: block;
+    color: #000;
     font-size: 16px;
     font-weight: bold;
   }
@@ -107,5 +108,51 @@ export const ViewMoreProductsBtn = styled.button`
     vertical-align: middle;
     margin-left: 10px;
     color: #555555;
+  }
+`;
+
+export const HamburgerMenuRight = styled.button`
+  width: 30px;
+  aspect-ratio: 1/1;
+  margin-left: 20px;
+  background: none;
+  position: relative;
+
+  & > span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+
+    &:nth-child(1) {
+      width: ${(props) => (props.$isSitemapOpen ? '100%' : '90%')};
+      top: ${(props) => (props.$isSitemapOpen ? '50%' : '25%')};
+      transform: translateY(-50%)
+        rotate(${(props) => (props.$isSitemapOpen ? '-45deg' : '0')});
+    }
+
+    &:nth-child(2) {
+      width: 70%;
+      top: 50%;
+      opacity: ${(props) => (props.$isSitemapOpen ? '0' : '1')};
+    }
+
+    &:nth-child(3) {
+      width: ${(props) => (props.$isSitemapOpen ? '100%' : '50%')};
+      top: ${(props) => (props.$isSitemapOpen ? '50%' : '75%')};
+      transform: translateY(-50%)
+        rotate(${(props) => (props.$isSitemapOpen ? '45deg' : '0')});
+    }
+  }
+`;
+
+export const HamburgerMenuLeft = styled(HamburgerMenuRight)`
+  margin-left: 0;
+  & > span {
+    left: 0;
   }
 `;

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import { SlideCircleButton } from '../../../CommonStyle';
 import { HomeSectionTitle } from '../../../CommonStyle';
@@ -49,8 +50,11 @@ function BestSellerSwiper() {
     spaceBetween: 20,
     speed: 500,
     loop: true,
+    pagination: {
+      clickable: true,
+    },
     loopAddBlankSlides: false,
-    modules: [Autoplay],
+    modules: [Autoplay, Pagination],
     onInit: (swiper) => {
       swiperRef.current = swiper;
     },
@@ -63,6 +67,7 @@ function BestSellerSwiper() {
         slidesPerView: 3,
         slidesPerGroup: 3,
       },
+
       0: {
         slidesPerView: 2,
         slidesPerGroup: 2,

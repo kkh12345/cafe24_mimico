@@ -1,47 +1,65 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Navigation } from 'swiper/modules';
 import { brandMenu, categoryMenu, csCenterMenu } from './Sitemap';
 import { HasDepth2LinkList } from '../common/LinkList';
 import SearchTermList from '../common/SearchTerms';
+import useResponsive from '../../hooks/useResponsive';
+import useSwiper from '../../hooks/useSwiper';
+import useSearchModal from '../../hooks/useSearchModal';
 
 export default function HeaderBottom() {
-  const [isSearchModalShow, setIsSearchModalShow] = useState(false);
-  const toggleSearchModal = (e) => {
-    e.preventDefault();
-    setIsSearchModalShow(!isSearchModalShow);
-  };
-  return (
-    <div className="header__bottom">
-      <SearchModal isSearchModalShow={isSearchModalShow} />
-      <div className="header__bottom-inner inner-common">
-        <GlobalNav />
-        <ul className="header__user-icon-list">
-          <li className="header__user-icon-item">
-            <Link to={'/cart'}>
-              <i className="xi-cart"></i>
-            </Link>
-          </li>
-          <li className="header__user-icon-item">
-            <Link to={''}>
-              <i className="xi-user"></i>
-            </Link>
-          </li>
-          <li className="header__user-icon-item">
-            <Link to={''} onClick={toggleSearchModal}>
-              {isSearchModalShow ? (
-                <i className="xi-close"></i>
-              ) : (
-                <i className="xi-search"></i>
-              )}
-            </Link>
-          </li>
-        </ul>
+  const { swiperRef, slideNext } = useSwiper();
+  const { isSearchModalShow, toggleSearchModal } = useSearchModal();
+  const { isTabletSmall } = useResponsive();
+  if (!isTabletSmall) {
+    return (
+      <div className="header__bottom">
+        <SearchModal isSearchModalShow={isSearchModalShow} />
+        <div className="header__bottom-inner inner-common">
+          <GlobalNav />
+          <ul className="header__user-icon-list">
+            <li className="header__user-icon-item">
+              <Link to={'/cart'}>
+                <i className="xi-cart"></i>
+              </Link>
+            </li>
+            <li className="header__user-icon-item">
+              <Link to={''}>
+                <i className="xi-user"></i>
+              </Link>
+            </li>
+            <li className="header__user-icon-item">
+              <Link to={''} onClick={toggleSearchModal}>
+                {isSearchModalShow ? (
+                  <i className="xi-close"></i>
+                ) : (
+                  <i className="xi-search"></i>
+                )}
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  );
+    );
+    // 모바일,태블릿
+  } else {
+    return (
+      <div className="header__bottom-mobile">
+        <div className="header__bottom-mobile-inner inner-common">
+          <GlobalNavSwiper swiperRef={swiperRef} />
+          <button className="global-nav-swiper__next-btn" onClick={slideNext}>
+            <i className="xi-angle-right"></i>
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
-function SearchModal({ isSearchModalShow }) {
+export function SearchModal({ isSearchModalShow }) {
   return (
     <div className={`search-modal ${isSearchModalShow && '--show'}`}>
       <div className="search-modal__inner inner-common">
@@ -70,5 +88,32 @@ function GlobalNav() {
         depth2ClassName={'global-nav__depth2'}
       />
     </nav>
+  );
+}
+
+function GlobalNavSwiper({ swiperRef }) {
+  const swiperOptions = {
+    slidesPerView: 'auto',
+    spaceBetween: 32,
+    speed: 300,
+    loop: true,
+    modules: [Navigation],
+
+    className: 'global-nav-swiper',
+    onInit: (swiper) => {
+      swiperRef.current = swiper;
+    },
+  };
+
+  return (
+    <Swiper {...swiperOptions}>
+      {categoryMenu.map(({ name, to }) => {
+        return (
+          <SwiperSlide key={name}>
+            <Link to={to}>{name}</Link>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }

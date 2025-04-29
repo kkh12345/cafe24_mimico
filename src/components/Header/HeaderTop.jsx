@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { SearchModal } from './HeaderBottom';
 import Sitemap from './Sitemap';
+import useResponsive from '../../hooks/useResponsive';
+import { HamburgerMenuLeft, HamburgerMenuRight } from '../../CommonStyle';
+import useSearchModal from '../../hooks/useSearchModal';
 
 export const logoImg = 'logo.png';
 
@@ -25,44 +28,8 @@ const userLinks = [
 ];
 
 const S = {
-  HamburgerMenu: styled.button`
-    width: 28px;
-    aspect-ratio: 1/1;
-    margin-left: 20px;
-    background: none;
-    position: relative;
-
-    & > span {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background-color: #000;
-      position: absolute;
-      right: 0;
-      transform: translateY(-50%);
-      transition: all 0.3s;
-
-      &:nth-child(1) {
-        width: ${(props) => (props.$isSitemapOpen ? '100%' : '90%')};
-        top: ${(props) => (props.$isSitemapOpen ? '50%' : '25%')};
-        transform: translateY(-50%)
-          rotate(${(props) => (props.$isSitemapOpen ? '-45deg' : '0')});
-      }
-
-      &:nth-child(2) {
-        width: 70%;
-        top: 50%;
-        opacity: ${(props) => (props.$isSitemapOpen ? '0' : '1')};
-      }
-
-      &:nth-child(3) {
-        width: ${(props) => (props.$isSitemapOpen ? '100%' : '50%')};
-        top: ${(props) => (props.$isSitemapOpen ? '50%' : '75%')};
-        transform: translateY(-50%)
-          rotate(${(props) => (props.$isSitemapOpen ? '45deg' : '0')});
-      }
-    }
-  `,
+  HamburgerMenuLeft: HamburgerMenuLeft,
+  HamburgerMenuRight: HamburgerMenuRight,
 };
 
 export default function HeaderTop() {
@@ -70,36 +37,78 @@ export default function HeaderTop() {
   const openSiteMap = () => {
     setIsSitemapOpen(!isSitemapOpen);
   };
+  const { isSearchModalShow, toggleSearchModal } = useSearchModal();
+  const { isTabletSmall } = useResponsive();
+  if (!isTabletSmall) {
+    return (
+      <div className="header__top">
+        {/* 사이트맵 */}
+        {isSitemapOpen && <Sitemap />}
+        <div className="header__top-inner inner-common">
+          <Link className="header__logo-wrapper" to="/">
+            <img
+              className="header__logo"
+              src={`/img/${logoImg}`}
+              alt="로고이미지"
+            />
+          </Link>
 
-  return (
-    <div className="header__top">
-      {/* 사이트맵 */}
-      {isSitemapOpen && <Sitemap />}
-      <div className="header__top-inner inner-common">
-        <Link className="header__logo-wrapper" to="/">
-          <img
-            className="header__logo"
-            src={`/img/${logoImg}`}
-            alt="로고이미지"
-          />
-        </Link>
+          <ul className="header__user-link-list">
+            {userLinks.map(({ name, to }) => {
+              return (
+                <li className="header__user-link-item" key={name}>
+                  <Link to={to}>{name}</Link>
+                </li>
+              );
+            })}
+          </ul>
 
-        <ul className="header__user-link-list">
-          {userLinks.map(({ name, to }) => {
-            return (
-              <li className="header__user-link-item" key={name}>
-                <Link to={to}>{name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <S.HamburgerMenu $isSitemapOpen={isSitemapOpen} onClick={openSiteMap}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </S.HamburgerMenu>
+          <S.HamburgerMenuRight
+            $isSitemapOpen={isSitemapOpen}
+            onClick={openSiteMap}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </S.HamburgerMenuRight>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="header__top-mobile">
+        <SearchModal isSearchModalShow={isSearchModalShow}></SearchModal>
+        <div className="header__top-mobile-inner inner-common">
+          <S.HamburgerMenuLeft>
+            <span></span>
+            <span></span>
+            <span></span>
+          </S.HamburgerMenuLeft>
+          <Link className="header__logo-wrapper" to="/">
+            <img
+              className="header__logo"
+              src={`/img/${logoImg}`}
+              alt="로고이미지"
+            />
+          </Link>
+          <ul className="header__user-icon-list">
+            <li className="header__user-icon-item">
+              <Link to={''} onClick={toggleSearchModal}>
+                {isSearchModalShow ? (
+                  <i className="xi-close"></i>
+                ) : (
+                  <i className="xi-search"></i>
+                )}
+              </Link>
+            </li>
+            <li className="header__user-icon-item">
+              <Link to={'/cart'}>
+                <i className="xi-cart"></i>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
