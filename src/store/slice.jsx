@@ -33,12 +33,23 @@ export const isSearchModalShowSlice = createSlice({
     },
   },
 });
+
+export const isSideMenuOpenSlice = createSlice({
+  name: 'isSideMenuOpen',
+  initialState: false,
+  reducers: {
+    setIsSideMenuOpen: (state, a) => {
+      return a.payload;
+    },
+  },
+});
 // Action creators are generated for each case reducer function
 export const { setReviews } = reviewsSlice.actions;
 export const { setProducts } = productsSlice.actions;
 export const { setIsSearchModalShow } = isSearchModalShowSlice.actions;
+export const { setIsSideMenuOpen } = isSideMenuOpenSlice.actions;
 
 export const reviewsReducer = reviewsSlice.reducer;
 export const productsReducer = productsSlice.reducer;
-
 export const isSearchModalShowReducer = isSearchModalShowSlice.reducer;
+export const isSideMenuOpenReducer = isSideMenuOpenSlice.reducer;

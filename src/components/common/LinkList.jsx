@@ -25,6 +25,7 @@ export function HasDepth2LinkList(props) {
         return (
           <li className={depth1ClassName + '-item'} key={a.name}>
             <Link to={a.to}>{a.name}</Link>
+
             {a.depth2 && (
               <LinkList arr={a.depth2} className={depth2ClassName} />
             )}

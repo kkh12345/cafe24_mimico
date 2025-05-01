@@ -43,6 +43,7 @@ export default function NewSection({ scrollAniRef }) {
             more
           </S.MoreButtonSmall>
         </S.HomeSectionTitle>
+
         <ul className="new__grid-container">
           {newProducts.slice(0, currentPage * perView).map((product) => {
             return (

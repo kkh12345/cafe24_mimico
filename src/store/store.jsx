@@ -3,6 +3,7 @@ import {
   reviewsReducer,
   productsReducer,
   isSearchModalShowReducer,
+  isSideMenuOpenReducer,
 } from './slice';
 
 export const store = configureStore({
@@ -10,5 +11,6 @@ export const store = configureStore({
     reviews: reviewsReducer,
     products: productsReducer,
     isSearchModalShow: isSearchModalShowReducer,
+    isSideMenuOpen: isSideMenuOpenReducer,
   },
 });

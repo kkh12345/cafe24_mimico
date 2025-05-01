@@ -14,6 +14,10 @@
   font-family: 'GmarketSansMedium', 'Montserrat', 'Noto Sans KR';
 }
 
+body {
+  min-width: 320px;
+}
+
 ul,
 li {
   list-style: none;
@@ -45,6 +49,12 @@ input {
   width: 92%;
   max-width: 1280px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .inner-common {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 480px) {

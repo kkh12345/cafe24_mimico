@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setProducts, setReviews } from '../store/slice';
+import { setProducts } from '../store/slice';
 import axios from 'axios';
 
 export default function useProducts() {

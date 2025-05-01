@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+
+// 스와이퍼
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation } from 'swiper/modules';
+
+//변수
 import { brandMenu, categoryMenu, csCenterMenu } from './Sitemap';
+
+//컴포넌트
 import { HasDepth2LinkList } from '../common/LinkList';
 import SearchTermList from '../common/SearchTerms';
+
+//커스텀 훅
 import useResponsive from '../../hooks/useResponsive';
 import useSwiper from '../../hooks/useSwiper';
 import useSearchModal from '../../hooks/useSearchModal';
@@ -14,6 +21,7 @@ export default function HeaderBottom() {
   const { swiperRef, slideNext } = useSwiper();
   const { isSearchModalShow, toggleSearchModal } = useSearchModal();
   const { isTabletSmall } = useResponsive();
+
   if (!isTabletSmall) {
     return (
       <div className="header__bottom">

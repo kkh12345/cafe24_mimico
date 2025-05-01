@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// 컴포넌트
 import { SearchModal } from './HeaderBottom';
 import Sitemap from './Sitemap';
-import useResponsive from '../../hooks/useResponsive';
+import SideMenu from '../SideMenu/SideMenu';
+
+//스타일 컴포넌트
 import { HamburgerMenuLeft, HamburgerMenuRight } from '../../CommonStyle';
+
+//커스텀 훅
+import useResponsive from '../../hooks/useResponsive';
 import useSearchModal from '../../hooks/useSearchModal';
+import useSideMenu from '../../hooks/useSideMenu';
 
 export const logoImg = 'logo.png';
 
-const userLinks = [
+export const userLinks = [
   {
     name: '로그인',
     to: '/login',
@@ -39,6 +47,7 @@ export default function HeaderTop() {
   };
   const { isSearchModalShow, toggleSearchModal } = useSearchModal();
   const { isTabletSmall } = useResponsive();
+  const { openSideMenu } = useSideMenu();
   if (!isTabletSmall) {
     return (
       <div className="header__top">
@@ -77,22 +86,23 @@ export default function HeaderTop() {
   } else {
     return (
       <div className="header__top-mobile">
-        <SearchModal isSearchModalShow={isSearchModalShow}></SearchModal>
+        <SideMenu />
+        <SearchModal isSearchModalShow={isSearchModalShow} />
         <div className="header__top-mobile-inner inner-common">
-          <S.HamburgerMenuLeft>
+          <S.HamburgerMenuLeft onClick={openSideMenu}>
             <span></span>
             <span></span>
             <span></span>
           </S.HamburgerMenuLeft>
-          <Link className="header__logo-wrapper" to="/">
+          <Link className="header__mobile-logo-wrapper" to="/">
             <img
-              className="header__logo"
+              className="header__mobile-logo"
               src={`/img/${logoImg}`}
               alt="로고이미지"
             />
           </Link>
-          <ul className="header__user-icon-list">
-            <li className="header__user-icon-item">
+          <ul className="header__mobile-user-icon-list">
+            <li className="header__mobile-user-icon-item">
               <Link to={''} onClick={toggleSearchModal}>
                 {isSearchModalShow ? (
                   <i className="xi-close"></i>
@@ -101,7 +111,7 @@ export default function HeaderTop() {
                 )}
               </Link>
             </li>
-            <li className="header__user-icon-item">
+            <li className="header__mobile-user-icon-item">
               <Link to={'/cart'}>
                 <i className="xi-cart"></i>
               </Link>

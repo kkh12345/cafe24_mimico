@@ -112,7 +112,7 @@ export const ViewMoreProductsBtn = styled.button`
 `;
 
 export const HamburgerMenuRight = styled.button`
-  width: 30px;
+  width: 28px;
   aspect-ratio: 1/1;
   margin-left: 20px;
   background: none;
@@ -136,13 +136,13 @@ export const HamburgerMenuRight = styled.button`
     }
 
     &:nth-child(2) {
-      width: 70%;
+      width: 75%;
       top: 50%;
       opacity: ${(props) => (props.$isSitemapOpen ? '0' : '1')};
     }
 
     &:nth-child(3) {
-      width: ${(props) => (props.$isSitemapOpen ? '100%' : '50%')};
+      width: ${(props) => (props.$isSitemapOpen ? '100%' : '60%')};
       top: ${(props) => (props.$isSitemapOpen ? '50%' : '75%')};
       transform: translateY(-50%)
         rotate(${(props) => (props.$isSitemapOpen ? '45deg' : '0')});

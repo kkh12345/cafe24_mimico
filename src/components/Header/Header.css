@@ -185,15 +185,7 @@
 
 /* === global nav swiper === */
 
-.header__bottom-mobile-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-left: 16px;
-}
 .global-nav-swiper__next-btn {
-  padding: 15px 16px 15px 10px;
   background-color: transparent;
   font-size: 0.9375rem;
   font-weight: bold;
@@ -208,12 +200,35 @@
 
 .global-nav-swiper .swiper-slide {
   width: max-content;
+  padding: 10px 0;
 }
 
 .global-nav-swiper .swiper-slide a {
   font-size: 0.9375rem;
 }
-
+/*  === header bottom mobile === */
+.header__bottom-mobile-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.header__mobile-logo-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.header__mobile-user-icon-list {
+  display: flex;
+  gap: 10px;
+}
+.header__mobile-user-icon-item i {
+  display: block;
+  font-size: 28px;
+  color: var(--point-orange);
+}
 /* === search modal === */
 
 .search-modal {
@@ -277,4 +292,16 @@
   .global-nav__depth1-item > a {
     font-size: 0.8125rem;
   }
+}
+
+@media screen and (max-width: 768px) {
+  .search-modal__search-area {
+    width: 100%;
+  }
+  .header__mobile-logo {
+    max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 480px) {
 }

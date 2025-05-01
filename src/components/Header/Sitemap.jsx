@@ -1,3 +1,4 @@
+//컴포넌트
 import { LinkList, HasDepth2LinkList } from '../common/LinkList';
 
 export const brandMenu = {
