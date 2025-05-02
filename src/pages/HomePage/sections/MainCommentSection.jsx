@@ -1,5 +1,6 @@
 import { logoImg } from '../../../components/Header/HeaderTop';
 import SearchTermList from '../../../components/common/SearchTerms';
+import './MainCommentSection.css';
 
 export default function MainCommentSection() {
   return (

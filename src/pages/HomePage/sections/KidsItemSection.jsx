@@ -11,6 +11,7 @@ import {
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import useResponsive from '../../../hooks/useResponsive';
 import { useEffect, useState } from 'react';
+import './KidsItemSection.css';
 
 const S = {
   MoreButtonSmall: MoreButtonSmall,

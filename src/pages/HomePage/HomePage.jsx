@@ -1,3 +1,6 @@
+import { useEffect, useRef } from 'react';
+
+//컴포넌트
 import MainVisualSection from './sections/MainVisualSection';
 import MainCommentSection from './sections/MainCommentSection';
 import InstagramSection from './sections/InstagramSection';
@@ -6,11 +9,20 @@ import BestSellerSection from './sections/BestSellerSection';
 import NewSection from './sections/NewSection';
 import CollectionSection from './sections/CollectionSection';
 import KidsItemSection from './sections/KidsItemSection';
-import { useEffect, useRef } from 'react';
+
+//커스텀 훅
+import useProducts from '../../hooks/useProducts';
+
+//css
 import './HomePage.css';
 
 export default function HomePage() {
   const scrollAniRef = useRef({});
+  const { getProducts } = useProducts();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   let lastScrollY = 0;
   useEffect(() => {

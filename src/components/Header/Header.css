@@ -108,6 +108,7 @@
   align-items: center;
   height: 85px;
 }
+
 /* === header bottom === */
 .header__bottom {
   position: relative;
@@ -206,7 +207,9 @@
 .global-nav-swiper .swiper-slide a {
   font-size: 0.9375rem;
 }
+
 /*  === header bottom mobile === */
+
 .header__bottom-mobile-inner {
   display: flex;
   justify-content: space-between;
@@ -229,6 +232,7 @@
   font-size: 28px;
   color: var(--point-orange);
 }
+
 /* === search modal === */
 
 .search-modal {
@@ -284,7 +288,6 @@
 }
 
 @media screen and (max-width: 1200px) {
-  /* global nav */
   .global-nav__depth1-item {
     padding: 15px 20px 15px 0;
   }

@@ -23,6 +23,7 @@ export default function HeaderBottom() {
   const { isTabletSmall } = useResponsive();
 
   if (!isTabletSmall) {
+    // PC
     return (
       <div className="header__bottom">
         <SearchModal isSearchModalShow={isSearchModalShow} />
@@ -52,8 +53,8 @@ export default function HeaderBottom() {
         </div>
       </div>
     );
-    // 모바일,태블릿
   } else {
+    // 모바일,태블릿
     return (
       <div className="header__bottom-mobile">
         <div className="header__bottom-mobile-inner inner-common">

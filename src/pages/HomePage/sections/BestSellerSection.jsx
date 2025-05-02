@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
+
+//스와이퍼
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+//컴포넌트
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import { SlideCircleButton } from '../../../CommonStyle';
 import { HomeSectionTitle } from '../../../CommonStyle';
@@ -11,6 +15,9 @@ import { HomeSectionTitle } from '../../../CommonStyle';
 import useProducts from '../../../hooks/useProducts';
 import useSwiper from '../../../hooks/useSwiper';
 import useResponsive from '../../../hooks/useResponsive';
+
+//css
+import './BestSellerSection.css';
 
 const S = {
   HomeSectionTitle: HomeSectionTitle,
@@ -36,7 +43,7 @@ export default function BestSellerSection({ scrollAniRef }) {
 }
 
 function BestSellerSwiper() {
-  const { products, getProducts } = useProducts();
+  const { products } = useProducts();
   const { swiperRef, slideNext, slidePrev } = useSwiper();
   const { isMobile } = useResponsive();
 
@@ -76,10 +83,6 @@ function BestSellerSwiper() {
     },
     className: 'best-seller-swiper',
   };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <div className="best-seller__swiper-wrapper">

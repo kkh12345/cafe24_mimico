@@ -1,12 +1,21 @@
 import React, { useEffect } from 'react';
+
+//스와이퍼
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+
+//컴포넌트
 import ReviewCard from '../../../components/ReviewCard/ReviewCard';
 import { HomeSectionTitle } from '../../../CommonStyle';
 import { MoreButtonSmall } from '../../../CommonStyle';
+
+//커스텀 훅
 import useReviews from '../../../hooks/useReviews';
 import useSwiper from '../../../hooks/useSwiper';
+
+//css
+import './ReviewSection.css';
 
 const S = {
   HomeSectionTitle: HomeSectionTitle,

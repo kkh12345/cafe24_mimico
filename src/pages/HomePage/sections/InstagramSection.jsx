@@ -1,5 +1,5 @@
 import { HomeSectionTitle } from '../../../CommonStyle';
-
+import './InstagramSection.css';
 const instagramThumbs = [
   'insta01.jpg',
   'insta02.jpg',

@@ -65,6 +65,7 @@ function SideMenuLinks() {
       })
     );
   };
+
   return (
     <ul className="side-menu__link-depth1">
       {menuArr.map((a, i) => {

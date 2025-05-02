@@ -1,12 +1,19 @@
+//스와이퍼
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+
+//컴포넌트
 import { HomeSectionTitle, SlideCircleButton } from '../../../CommonStyle';
+import ProductCard from '../../../components/ProductCard/ProductCard';
+
+//커스텀 훅
 import useSwiper from '../../../hooks/useSwiper';
 import useProducts from '../../../hooks/useProducts';
-import ProductCard from '../../../components/ProductCard/ProductCard';
 import useResponsive from '../../../hooks/useResponsive';
 
+//css
+import './CollectionSection.css';
 const S = {
   HomeSectionTitle: HomeSectionTitle,
   SlideCircleButton: SlideCircleButton,

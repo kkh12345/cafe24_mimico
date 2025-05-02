@@ -1,9 +1,16 @@
+import { useState, useEffect } from 'react';
+
+//컴포넌트
 import { HomeSectionTitle, ViewMoreProductsBtn } from '../../../CommonStyle';
 import { MoreButtonSmall } from '../../../CommonStyle';
 import ProductCard from '../../../components/ProductCard/ProductCard';
+
+//커스텀 훅
 import useProducts from '../../../hooks/useProducts';
 import useResponsive from '../../../hooks/useResponsive';
-import { useState, useEffect } from 'react';
+
+//css
+import './NewSection.css';
 
 const S = {
   HomeSectionTitle: HomeSectionTitle,

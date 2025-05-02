@@ -49,9 +49,9 @@ export default function HeaderTop() {
   const { isTabletSmall } = useResponsive();
   const { openSideMenu } = useSideMenu();
   if (!isTabletSmall) {
+    // PC
     return (
       <div className="header__top">
-        {/* 사이트맵 */}
         {isSitemapOpen && <Sitemap />}
         <div className="header__top-inner inner-common">
           <Link className="header__logo-wrapper" to="/">
@@ -84,6 +84,7 @@ export default function HeaderTop() {
       </div>
     );
   } else {
+    // 모바일,태블릿
     return (
       <div className="header__top-mobile">
         <SideMenu />
