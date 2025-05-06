@@ -1,28 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
-
-//css
-import './ProductDetailInfo.css';
+import { useRef, useState } from 'react';
 import useProducts from '../../../hooks/useProducts';
 
+//css
+import './ProductDetailLeft.css';
 const letMouseHoverImg = 'let_mouse_hover.gif';
 
-export default function ProductDetailInfo({ id }) {
-  return (
-    <article className="product-detail-info">
-      <div className="product-detail-info__inner inner-common">
-        <ProductDetailInfoLeft id={id} />
-        <ProductDetailInfoRight id={id} />
-      </div>
-    </article>
-  );
-}
-
-function ProductDetailInfoLeft({ id }) {
+export default function ProductDetailLeft({ id }) {
   const zoomBoxRef = useRef(null);
   const bigImageRef = useRef(null);
   const [imgWrapMouseIn, setImgWrapMouseIn] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState([]);
-  const { products } = useProducts();
+  const { findProduct } = useProducts();
+  const currentProduct = findProduct(id);
 
   const zoomBoxShow = () => {
     setImgWrapMouseIn(true);
@@ -70,15 +58,10 @@ function ProductDetailInfoLeft({ id }) {
     }
   };
 
-  useEffect(() => {
-    if (products.length > 0)
-      setCurrentProduct(products.find((a) => a.productId === parseInt(id)));
-  }, [products]);
-
   return (
-    <div className="product-detail-info__left">
+    <section className="product-detail__left">
       <div
-        className="product-detail-info__small-img-wrapper"
+        className="product-detail__small-img-wrapper"
         onMouseEnter={zoomBoxShow}
         onMouseLeave={zoomBoxHide}
         onMouseMove={(e) => {
@@ -86,37 +69,33 @@ function ProductDetailInfoLeft({ id }) {
         }}
       >
         <div
-          className={`product-detail-info__zoom-box ${
-            imgWrapMouseIn && '--show'
-          }`}
+          className={`product-detail__zoom-box ${imgWrapMouseIn && '--show'}`}
           ref={zoomBoxRef}
         ></div>
         <img
-          className="product-detail-info__small-img"
-          src={`/img/${currentProduct.productImg}`}
-          alt={currentProduct.productName}
+          className="product-detail__small-img"
+          src={`/img/${currentProduct?.productImg}`}
+          alt={currentProduct?.productName}
         />
         <img
-          className={`product-detail-info__let-mouse-hover ${
+          className={`product-detail__let-mouse-hover ${
             imgWrapMouseIn && '--hide'
           }`}
           src={`/img/${letMouseHoverImg}`}
           alt="마우스를 올려보세요"
         />
         <div
-          className={`product-detail-info__big-img-wrapper ${
+          className={`product-detail__big-img-wrapper ${
             imgWrapMouseIn && '--show'
           }`}
           ref={bigImageRef}
         >
           <img
-            src={`/img/${currentProduct.productImg}`}
-            alt={currentProduct.productName}
+            src={`/img/${currentProduct?.productImg}`}
+            alt={currentProduct?.productName}
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-function ProductDetailInfoRight({ id }) {}

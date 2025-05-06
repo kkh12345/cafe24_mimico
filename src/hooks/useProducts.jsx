@@ -32,5 +32,9 @@ export default function useProducts() {
     localStorage.setItem('mimicoProducts', JSON.stringify(products));
   };
 
-  return { products, newProducts, getProducts, updateProducts };
+  const findProduct = (id) => {
+    return products.find((a) => a.productId === parseInt(id));
+  };
+
+  return { products, newProducts, getProducts, updateProducts, findProduct };
 }

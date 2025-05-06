@@ -1,0 +1,5 @@
+.product-detail__inner {
+  display: flex;
+  gap: 10%;
+  padding-top: 50px;
+}

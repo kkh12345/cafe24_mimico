@@ -41,7 +41,13 @@ export default function HeaderBottom() {
               </Link>
             </li>
             <li className="header__user-icon-item">
-              <Link to={''} onClick={toggleSearchModal}>
+              <Link
+                to={''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleSearchModal();
+                }}
+              >
                 {isSearchModalShow ? (
                   <i className="xi-close"></i>
                 ) : (
